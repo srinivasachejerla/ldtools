@@ -6,7 +6,12 @@ import packageInfo from '../../package.json';
 
 export const environment = {
   appVersion: packageInfo.version,
-  production: true
+  production: false,
+  baseUrl: 'https://app.launchdarkly.com/api/v2/flags',
+  projectKey: 'default',
+  authorizationHeader: 'api-1d01ebda-9703-4ea9-acec-11abbb735ab7',
+  authorizationSemanticHeader: 'api-1d01ebda-9703-4ea9-acec-11abbb735ab7',
+
 };
 /*
  * For easier debugging in development mode, you can import the following file

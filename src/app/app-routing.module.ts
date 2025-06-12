@@ -2,11 +2,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
 import { GuestComponent } from './theme/layout/guest/guest.component';
+import { LoginComponent } from './demo/login/login.component';
+import { AuthGuard } from './demo/auth.guard';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: '',
     component: AdminComponent,
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
@@ -18,26 +25,14 @@ const routes: Routes = [
         loadComponent: () => import('./demo/dashboard/dashboard.component').then((c) => c.DashboardComponent)
       },
       {
-        path: 'basic',
+        path: 'action',
         loadChildren: () => import('./demo/ui-elements/ui-basic/ui-basic.module').then((m) => m.UiBasicModule)
       },
-      {
-        path: 'forms',
-        loadChildren: () => import('./demo/pages/form-elements/form-elements.module').then((m) => m.FormElementsModule)
-      },
-      {
-        path: 'tables',
-        loadChildren: () => import('./demo/pages/tables/tables.module').then((m) => m.TablesModule)
-      },
-      {
-        path: 'apexchart',
-        loadComponent: () => import('./demo/pages/core-chart/apex-chart/apex-chart.component')
-      },
-      {
-        path: 'sample-page',
-        loadComponent: () => import('./demo/extra/sample-page/sample-page.component')
-      }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   },
   {
     path: '',

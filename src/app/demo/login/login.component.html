@@ -1,0 +1,42 @@
+<div class="login-container">
+    <div class="login-card">
+      <div class="icon">
+        <!-- <i class="fa fa-lock"></i> -->
+        <img src="../../../assets/images/favicon-login.png" alt="App Icon" style="width: 50px; height: 65px; margin-bottom: 10px;" />
+      </div>
+      <h2>Login</h2>
+  
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <input
+          type="email"
+          name="email"
+          placeholder="User Name"
+          [(ngModel)]="username"
+          required
+          class="input"
+        />
+  
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          [(ngModel)]="password"
+          required
+          class="input"
+        />
+  
+        <!-- <div class="checkbox">
+          <input type="checkbox" id="remember" [(ngModel)]="rememberMe" name="rememberMe" />
+          <label for="remember">Save Details</label>
+        </div> -->
+  
+        <button type="submit" class="login-button">Login</button>
+      </form>
+  
+      <!-- <div class="links">
+        <p>Forgot password? <a href="#">Reset</a></p>
+        <p>Don’t have an account? <a href="#">Sign up</a></p>
+      </div> -->
+    </div>
+  </div>
+  

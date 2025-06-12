@@ -6,29 +6,13 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'badges',
-        loadComponent: () => import('./basic-badge/basic-badge.component')
+        path: 'create-feature-flag',
+        loadComponent: () => import('./create-flag/create-flag.component')
       },
       {
-        path: 'button',
-        loadComponent: () => import('./basic-button/basic-button.component')
+        path: 'flag-status/:flagKey',
+        loadComponent: () => import('./flag-status/flag-status.component')
       },
-      {
-        path: 'breadcrumb-paging',
-        loadComponent: () => import('./breadcrumb-paging/breadcrumb-paging.component')
-      },
-      {
-        path: 'collapse',
-        loadComponent: () => import('./basic-collapse/basic-collapse.component')
-      },
-      {
-        path: 'tabs-pills',
-        loadComponent: () => import('./basic-tabs-pills/basic-tabs-pills.component')
-      },
-      {
-        path: 'typography',
-        loadComponent: () => import('./basic-typography/basic-typography.component')
-      }
     ]
   }
 ];

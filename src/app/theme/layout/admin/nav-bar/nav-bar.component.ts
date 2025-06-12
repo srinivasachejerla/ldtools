@@ -1,6 +1,6 @@
 // angular import
 import { Component, output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 // project import
@@ -23,7 +23,7 @@ export class NavBarComponent {
   collapseStyle: string;
 
   // constructor
-  constructor() {
+  constructor( private router: Router) {
     this.navCollapsedMob = false;
     this.headerStyle = '';
     this.menuClass = false;

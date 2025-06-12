@@ -1,5 +1,13 @@
 <ul class="navbar-nav">
   <li>
+    <button class="btn btn-primary" *ngIf="isCurrentRoute('/dashboard')" (click)="createFlag()">
+      <i class="fa fa-plus" aria-hidden="true"></i>Create Flag
+    </button>
+    <button class="logout-btn" (click)="logout()">
+      <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+  </li>
+  <!-- <li>
     <div class="dropdown" ngbDropdown placement="auto">
       <a ngbDropdownToggle href="javascript:" data-toggle="dropdown"><i class="icon feather icon-bell"></i></a>
       <div ngbDropdownMenu class="dropdown-menu dropdown-menu-end notification">
@@ -68,8 +76,8 @@
         </div>
       </div>
     </div>
-  </li>
-  <li>
+  </li> -->
+  <!-- <li>
     <div class="dropdown drp-user" ngbDropdown placement="auto">
       <a href="javascript:" ngbDropdownToggle data-toggle="dropdown">
         <i class="icon feather icon-settings"></i>
@@ -110,5 +118,5 @@
         </ul>
       </div>
     </div>
-  </li>
+  </li> -->
 </ul>

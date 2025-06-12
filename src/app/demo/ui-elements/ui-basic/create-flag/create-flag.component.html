@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Default" [options]="false">
+      <form [formGroup]="flagForm" class="p-3 border rounded">
+        <h4 class="mb-3">Details</h4>
+      
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="name" class="form-label">Name<span class="text-danger">*</span></label>
+            <input
+              id="name"
+              type="text"
+              class="form-control"
+              formControlName="name"
+              [(ngModel)]="newFlagData.name"
+              [ngClass]="{ 'is-invalid': submitted && flagForm.get('name')?.invalid }"
+            />
+            <div class="invalid-feedback">Name is required.</div>
+          </div>
+      
+          <div class="col-md-6 mb-3">
+            <label for="key" class="form-label">Key<span class="text-danger">*</span></label>
+            <input
+              id="key"
+              type="text"
+              class="form-control"
+              formControlName="key"
+              [(ngModel)]="newFlagData.key"
+              [ngClass]="{ 'is-invalid': submitted && flagForm.get('key')?.invalid }"
+            />
+            <div class="invalid-feedback">Key is required.</div>
+          </div>
+        </div>
+      
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea
+            id="description"
+            class="form-control"
+            formControlName="description"
+            rows="3"
+            placeholder="Add a description for this flag"
+            [(ngModel)]="newFlagData.description"
+          ></textarea>
+        </div>
+      
+        <button type="button" class="btn btn-outline-secondary" (click)="redirectDashboard()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="createFeatureFlag()">Create Flag</button>
+      </form>
+      
+    </app-card>
+  </div>
+  <!-- <div class="col-md-12">
+    <app-card cardTitle="Outline" [options]="false" >
+      
+    </app-card>
+  </div> -->
+</div>

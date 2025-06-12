@@ -1,5 +1,6 @@
+
 <div class="row">
-  @for (sale of sales; track sale) {
+  <!-- @for (sale of sales; track sale) {
     <div class="{{ sale.design }} col-xl-4">
       <app-card [hidHeader]="true">
         <h6 class="mb-4">{{ sale.title }}</h6>
@@ -19,140 +20,75 @@
         </div>
       </app-card>
     </div>
-  }
-  <div class="col-xl-8 col-md-6">
-    <app-card cardTitle="Users From United States">
-      <div id="world-low" style="height: 450px"></div>
+  } -->
+
+  <!-- Flag status search section -->
+  <div class="col-xl-12 col-md-12">
+    <app-card>
+      <div class="col-xl-12 col-md-12 flag-count">Total Flags Count : {{totalFlagsCount}}</div>
+      <!-- <h6 class="mb-4">Flag Status</h6> -->
+      <div class="flag-search-container">
+        <input type="text" id="flagInput" [(ngModel)]="featureFlagKey" (keydown.enter)="getFlagDetails(featureFlagKey)" placeholder="Search flags by key" />
+        <button id="searchBtn" aria-label="Search flag" (click)="getFlagDetails(featureFlagKey)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="20" width="20" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M10.5 17a6.5 6.5 0 100-13 6.5 6.5 0 000 13z"/>
+          </svg>
+        </button>
+      </div>      
     </app-card>
   </div>
-  <div class="col-xl-4 col-md-6">
-    <div class="card bg-c-blue">
-      <div class="card-header borderless">
-        <h5 class="text-white">Earnings</h5>
-      </div>
-      <div class="card-block" style="padding: 0 25px">
-        <div class="earning-text mb-0">
-          <h3 class="mb-2 text-white f-w-300">
-            $4295.36
-            <i class="feather icon-arrow-up teal accent-3"></i>
-          </h3>
-          <span class="text-uppercase text-white d-block">Total Earnings</span>
-        </div>
-        <div id="widget-line-chart" class="WidgetlineChart2 ChartShadow" style="height: 180px"></div>
-      </div>
-    </div>
-    <div class="card">
-      @for (list of card; track list) {
-        <div class="card-block {{ list.design }}">
-          <div class="row d-flex align-items-center">
-            <div class="col-auto">
-              <i class="feather {{ list.icon }} f-30"></i>
-            </div>
-            <div class="col">
-              <h3 class="f-w-300">{{ list.number }}</h3>
-              <span class="d-block text-uppercase">{{ list.text }}</span>
-            </div>
-          </div>
-        </div>
-      }
-    </div>
-  </div>
-  @for (list of social_card; track list) {
-    <div class="{{ list.design }} col-xl-4">
-      <div class="card card-social">
-        <div class="card-block border-bottom">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-auto">
-              <i class="{{ list.icon }} f-36"></i>
-            </div>
-            <div class="col text-end">
-              <h3>{{ list.amount }}</h3>
-              <h5 class="{{ list.color }} mb-0">
-                {{ list.percentage }}
-                <span class="text-muted">Total Likes</span>
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div class="card-block">
-          <div class="row align-items-center justify-content-center card-active">
-            <div class="col-6">
-              <h6 class="text-center m-b-10">
-                <span class="text-muted m-r-5">Target:</span>
-                {{ list.target }}
-              </h6>
-              <ngb-progressbar type="progress-bar {{ list.progress_bg }}" height="6px" [value]="list.progress"></ngb-progressbar>
-            </div>
-            <div class="col-6">
-              <h6 class="text-center m-b-10">
-                <span class="text-muted m-r-5">Duration:</span>
-                {{ list.duration }}
-              </h6>
-              <ngb-progressbar type="progress-bar {{ list.progress_bg_2 }}" height="6px" [value]="list.progress2"></ngb-progressbar>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  }
-  <div class="col-xl-4 col-md-6">
-    <app-card cardTitle="Rating">
-      <div class="row align-items-center justify-content-center m-b-20">
-        <div class="col-6">
-          <h2 class="f-w-300 d-flex align-items-center float-start m-0">
-            4.7
-            <i class="fas fa-star f-10 m-l-10 text-c-yellow"></i>
-          </h2>
-        </div>
-        <div class="col-6">
-          <h6 class="d-flex align-items-center float-end m-0">
-            0.4
-            <i class="fas fa-caret-up text-c-green f-22 m-l-10"></i>
-          </h6>
-        </div>
-      </div>
-      <div class="row">
-        @for (list of progressing; track list; let last = $last) {
-          <div class="col-xl-12">
-            <h6 class="align-items-center float-start">
-              <i class="fas fa-star f-10 m-r-10 text-c-yellow"></i>
-              {{ list.number }}
-            </h6>
-            <h6 class="align-items-center float-end">{{ list.amount }}</h6>
-            <div class="m-t-30" [ngClass]="{ 'm-b-20': !last }">
-              <ngb-progressbar type="progress-bar {{ list.progress_bg }}" height="6px" [value]="list.progress"></ngb-progressbar>
-            </div>
-          </div>
-        }
-      </div>
-    </app-card>
-  </div>
-  <div class="col-xl-8 col-md-6">
+
+  <div class="col-xl-12 col-md-12">
     <app-card cardTitle="Recent Users" cardClass="Recent-Users table-card" blockClass="p-0">
       <div class="table-responsive">
-        <table class="table table-hover mb-0">
+        <table class="table table-hover mb-0" style="margin-bottom: 20px !important;">
+          <thead>
+            <tr>
+              <th style="width: 30px;"></th>
+              <th style="width: 500px;">Recently Created Flags</th>
+              <th>Create Date</th>
+              <th>Flag Status</th>
+            </tr>
+          </thead>
           <tbody>
-            @for (table of tables; track table) {
-              <tr class="unread">
-                <td>
-                  <img class="rounded-circle" style="width: 40px" src="{{ table.src }}" alt="activity-user" />
+              <tr class="unread" *ngFor="let flag of recentFlags">
+                <td style="width: 30px;">
+                  <img class="rounded-circle" style="width: 40px" src="../../../assets/images/avatar-2.jpg" alt="activity-user" />
                 </td>
-                <td>
-                  <h6 class="mb-1">{{ table.title }}</h6>
-                  <p class="m-0">{{ table.text }}</p>
+                <td style="width: 500px;">
+                  <p class="mb-1 flag-name" (click)="getFlagDetails(flag.key)">{{ flag.name }}</p>
+                  <p style="white-space: break-spaces;width: 400px;" class="m-0" *ngIf="flag.description.length > 0">{{ flag.description }}</p>
+                  <span
+                    class="badge bg-light text-dark position-relative"
+                    (click)="copyToClipboard(flag.key)"
+                    (mouseenter)="showToolTipIcon(flag.key)"
+                    (mouseleave)="hideToolTipIcon(flag.key)"
+                    style="cursor: pointer;padding: 10px;font-size: 12px;margin-top: 4px;">
+                    {{ flag.key }}
+                    
+                    <div *ngIf="tooltipVisible[flag.key]" class="tooltip-custom">
+                      Copy {{ flag.key }} to clipboard
+                    </div>
+                  </span>
+
                 </td>
                 <td>
                   <h6 class="text-muted">
-                    <i class="fas fa-circle {{ table.color }} f-10 m-r-15"></i>
-                    {{ table.time }}
+                    <i class="f-10 fa-circle fas m-r-15 text-c-green"></i>
+                    {{ formatTimestamp(flag.creationDate) }}
                   </h6>
                 </td>
                 <td>
-                  <a href="javascript:" class="badge me-2 theme-bg2 text-white f-12">Reject</a>
-                  <a href="javascript:" class="badge me-2 theme-bg text-white f-12">Approve</a>
+                  <div style="display: inline-block;">
+                    <a href="javascript:" (click)="getFlagDetails(flag.key)" class="badge me-2 theme-bg2 text-white f-12" style="background: #F5A623;">Test</a>
+                    <p class="m-0" [ngClass]="flag.environments.test.on? 'green-highlight' : 'red-highlight'">{{ flag.environments.test.on ? 'ON' : 'OFF'}}</p>
+                  </div>
+                  <div style="display: inline-block;">
+                    <a href="javascript:" (click)="getFlagDetails(flag.key)" class="badge me-2 theme-bg text-white f-12" style="background: #417505;">Production</a>
+                    <p class="m-0" [ngClass]="flag.environments.production.on? 'green-highlight' : 'red-highlight'">{{ flag.environments.production.on ? 'ON' : 'OFF'}}</p>
+                  </div>
                 </td>
               </tr>
-            }
           </tbody>
         </table>
       </div>
